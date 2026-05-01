@@ -13,3 +13,38 @@ dependencies = [
     "pre-commit>=4.6.0",
     "python-decouple>=3.8",
 ]
+
+# ── Tool configs ─────────────────────────────────────────────────────────────
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+exclude = '''
+/(
+    migrations
+  | venv
+  | .venv
+)/
+'''
+
+[tool.isort]
+profile = "black"
+skip = ["migrations", "venv", ".venv"]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+exclude = ["migrations/", "venv/", ".venv/"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["test_*.py", "*_test.py"]
+addopts = "-ra -q"
+testpaths = ["apps"]
+
+[tool.coverage.run]
+source = ["apps"]
+omit = ["*/migrations/*", "*/tests/*", "*/__init__.py"]
+
+[tool.coverage.report]
+show_missing = true

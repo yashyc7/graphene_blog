@@ -28,7 +28,7 @@ jobs:
           cache: pip
 
       - name: Install quality tools
-        run: pip install black isort flake8 mypy
+        run: pip install black isort flake8 mypy django-stubs graphene-stubs
 
       - name: Check formatting (black)
         run: black --check --diff .
@@ -40,7 +40,7 @@ jobs:
         run: flake8 .
 
       - name: Type check (mypy)
-        run: mypy apps/ config/
+        run: mypy --explicit-package-bases apps/ config/
 
   # ─────────────────────────────────────────
   # JOB 2: Security Scan
