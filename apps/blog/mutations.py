@@ -1,6 +1,6 @@
 import graphene
 
-from apps.common.types import ErrorType
+from apps.common.error_types import ErrorType
 from apps.users.models import Author
 
 from .inputs import CreatePostInput, UpdatePostInput

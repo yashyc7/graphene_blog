@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.db import IntegrityError
 
-from apps.common.types import ErrorType
+from apps.common.error_types import ErrorType
 
 from .inputs import CreateAuthorInput, UpdateAuthorInput
 from .models import Author
