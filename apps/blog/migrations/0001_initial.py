@@ -9,24 +9,51 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('users', '0001_initial'),
+        ("users", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(db_index=True, max_length=255)),
-                ('content', models.TextField()),
-                ('status', models.CharField(choices=[('draft', 'Draft'), ('published', 'Published')], default='draft', max_length=20)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='posts', to='users.author')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(db_index=True, max_length=255)),
+                ("content", models.TextField()),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[("draft", "Draft"), ("published", "Published")],
+                        default="draft",
+                        max_length=20,
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="posts",
+                        to="users.author",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-created_at'],
-                'indexes': [models.Index(fields=['status'], name='blog_post_status_02ce19_idx'), models.Index(fields=['author', 'status'], name='blog_post_author__95cbf7_idx')],
+                "ordering": ["-created_at"],
+                "indexes": [
+                    models.Index(fields=["status"], name="blog_post_status_02ce19_idx"),
+                    models.Index(
+                        fields=["author", "status"], name="blog_post_author__95cbf7_idx"
+                    ),
+                ],
             },
         ),
     ]

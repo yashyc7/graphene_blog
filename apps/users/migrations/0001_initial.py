@@ -7,22 +7,31 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Author',
+            name="Author",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(db_index=True, max_length=150)),
-                ('email', models.EmailField(max_length=254, unique=True)),
-                ('bio', models.TextField(blank=True, default='')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(db_index=True, max_length=150)),
+                ("email", models.EmailField(max_length=254, unique=True)),
+                ("bio", models.TextField(blank=True, default="")),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'ordering': ['name'],
-                'indexes': [models.Index(fields=['email'], name='users_autho_email_d80daf_idx')],
+                "ordering": ["name"],
+                "indexes": [
+                    models.Index(fields=["email"], name="users_autho_email_d80daf_idx")
+                ],
             },
         ),
     ]
