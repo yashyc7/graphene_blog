@@ -1,0 +1,27 @@
+# .github/labeler.yml
+# Maps PR labels to file path patterns
+
+"area: blog":
+  - changed-files:
+      - any-glob-to-any-file: "apps/blog/**"
+
+"area: users":
+  - changed-files:
+      - any-glob-to-any-file: "apps/users/**"
+
+"area: config":
+  - changed-files:
+      - any-glob-to-any-file: "config/**"
+
+"area: ci":
+  - changed-files:
+      - any-glob-to-any-file: ".github/**"
+
+"area: tests":
+  - changed-files:
+      - any-glob-to-any-file: "**/tests/**"
+      - any-glob-to-any-file: "conftest.py"
+
+"area: deps":
+  - changed-files:
+      - any-glob-to-any-file: "requirements*.txt"
