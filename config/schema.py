@@ -1,11 +1,18 @@
 import graphene
-from apps.users.schema import AuthorQuery
+
+from apps.blog.mutations import PostMutation
 from apps.blog.schema import PostQuery
+from apps.users.mutations import AuthorMutation
+from apps.users.schema import AuthorQuery
 
-# Multiple inheritence- merges all query into one root schema
 
-class Query(AuthorQuery,PostQuery,graphene.ObjectType):
+class Query(AuthorQuery, PostQuery, graphene.ObjectType):
     pass
 
 
-schema = graphene.Schema(query=Query)
+# Same composition pattern as Query — each app owns its Mutation class
+class Mutation(AuthorMutation, PostMutation, graphene.ObjectType):
+    pass
+
+
+schema = graphene.Schema(query=Query, mutation=Mutation)
