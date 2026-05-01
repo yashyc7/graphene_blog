@@ -1,7 +1,3 @@
-"""
-shared types.py at the root level which can be used by all apps for error handeling and other stuffs
-"""
-
 import graphene
 
 

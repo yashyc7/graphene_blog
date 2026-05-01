@@ -1,7 +1,3 @@
-"""
-These are called as the app level schemas (queries for gettingthe data where we write the resolver functions
-"""
-
 import graphene
 
 from .models import Author
@@ -19,4 +15,4 @@ class AuthorQuery(graphene.ObjectType):
         try:
             return Author.objects.get(id=id)
         except Author.DoesNotExist:
-            return None  ##graphql returns null - clean and no 500 errors
+            return None
